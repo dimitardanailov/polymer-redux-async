@@ -1,0 +1,27 @@
+<link rel="import" href="bower_components/polymer/polymer.html">
+<link rel="import" href="redux-store.html">
+
+<dom-module id="sign-up-form">
+    <template>
+        <label>
+            Username:
+            <input id="username" type="text" />
+        </label>
+
+        <button on-tap="signUp">Sign up!</button>
+    </template>
+
+    <script>
+        Polymer({
+            'is': 'sign-up-form',
+
+            behaviors: [ReduxBehavior, AsyncActionsBehavior],
+
+            signUp: function() {
+                let username = this.$.username.value;
+
+                this.dispatch('signUpWithTimeout', username)
+            }
+        });
+    </script>
+</dom-module>
